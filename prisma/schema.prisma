@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output          = "../src/generated/prisma"
+  moduleFormat    = "cjs"
+  importFileExtension = ""
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum TenantTier {
+  BASIC
+  GREEN_PREMIUM
+  ENTERPRISE
+}
+
+model Tenant {
+  id  String @id @default(uuid())
+  name String
+  subscriptionShare Float
+  tier TenantTier
+  crarryoverCredit Float @default(0)
+}
+
+model SolarProduction{
+  id String @id @default(uuid())
+  timestamp DateTime
+  kwh Float
+}
+
+model TenantConsumption{
+  id String @id @default(uuid())
+  tenantId String
+  timestamp DateTime
+  kwh Float
+}
