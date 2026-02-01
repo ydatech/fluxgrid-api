@@ -19,6 +19,26 @@ The system is composed of modular services:
 - Allocation Engine
 - Reporting API
 
+
+## API Endopints
+All API endpoints is documented using OAS 3.0 (Swagger), you can run this project and visit the documentation endpoint at `/docs`.
+### Tenant Management
+- POST /tenants
+- GET /tenants
+- GET /tenants/:id
+- PATCH /tenants/:id
+- DELETE /tenants/:id
+
+### Data Ingestion
+- POST /ingestion/solar
+- POST /ingestion/consumption
+
+### Allocation
+- POST /allocation/monthly?month=YYYY-MM
+
+### Reporting
+- POST /reports/monthly?month=YYYY-MM
+
 ## Project setup
 
 ```bash
